@@ -28,9 +28,21 @@ if "history" not in st.session_state:
     st.session_state.history = []
 
 st.set_page_config(page_title="MindMate - Mental Health Support", page_icon="🧠")
-st.title("🧠 Talk to your Mindmate")
+st.title("🧠 Talk to your Psychologist")
 
-st.markdown("_This AI psychologist remembers what you share and supports you gently._")
+# 🌈 Custom Styling
+st.markdown("""
+<style>
+/* Footer */
+.footer {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.85rem;
+    # margin-top: 27rem;
+}
+</style>
+""", unsafe_allow_html=True)
+st.markdown("_Made with soft code and big hugs 💕_")
 
 # Display conversation
 for msg in st.session_state.history:
@@ -54,6 +66,9 @@ if user_input:
     st.session_state.history.append({"role": "model", "text": bot_reply})
     with st.chat_message("model"):
         st.markdown(bot_reply)
+
+# ☁️ Footer
+# st.markdown('<div class="footer">Made with soft code and big hugs 💕</div>', unsafe_allow_html=True)
 
 # # Optional: Debug history from Gemini backend
 # with st.expander("🔍 Full Model History"):
