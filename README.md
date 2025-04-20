@@ -1,2 +1,1 @@
-# MindMate
- ai chatbot, a therapist [task for DSL competition]
+# antidepress_chatbot
