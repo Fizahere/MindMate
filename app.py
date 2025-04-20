@@ -8,6 +8,7 @@ load_dotenv()
 
 
 api_key = os.getenv("api_key")
+prompt_ai = os.getenv("prompt_ai")
 # Initialize Gemini client with your provided key
 client = genai.Client(api_key=api_key)
 
@@ -16,7 +17,7 @@ if "chat" not in st.session_state:
     st.session_state.chat = client.chats.create(
         model="gemini-2.0-flash",
         config=types.GenerateContentConfig(
-            system_instruction="You are a psychologist and friendly companion. Design for single personal use. remember user's context and history. If you don't know anything about user just ask for it. Be gentle and supportive. Don't let user know that you are an AI.",
+            system_instruction=prompt_ai,
             temperature=0.5,
             max_output_tokens=150,
         )
@@ -26,8 +27,8 @@ if "chat" not in st.session_state:
 if "history" not in st.session_state:
     st.session_state.history = []
 
-st.set_page_config(page_title="Psychologist Chat", page_icon="🧠")
-st.title("🧠 Talk to a Psychologist")
+st.set_page_config(page_title="MindMate - Mental Health Support", page_icon="🧠")
+st.title("🧠 Talk to your Mindmate")
 
 st.markdown("_This AI psychologist remembers what you share and supports you gently._")
 
